@@ -1,0 +1,116 @@
+table td,
+th {
+  background: none !important;
+  border: none;
+}
+table {
+  margin: 0 !important;
+  min-width: 1000px
+}
+.table-responsive {
+    max-height: 350px !important;
+    overflow-y: auto;
+}
+.table-responsive::-webkit-scrollbar {
+  height: 3px; 
+  width: 3px; 
+}
+
+.table-responsive::-webkit-scrollbar-track {
+  background: #e1e2e6;
+  border-radius: 10px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+  background: #1347f5;
+  border-radius: 10px;
+}
+
+table th {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: #282141 !important;
+  font-family: "Inter", sans-serif;
+  padding-bottom: 25px !important;
+}
+
+table td {
+  color: #282141 !important;
+  vertical-align: middle;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Inter", sans-serif;
+  padding-bottom: 15px !important;
+}
+.table_price span {
+  font-weight: 500;
+  font-size: 15px;
+}
+
+.table_img img {
+  width: 34px;
+  height: 34px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.table_id  a{
+  color: #1347f5 !important;
+  letter-spacing: 2;
+}
+.table_detailed a,
+.table_link a {
+  text-decoration: none;
+  color: #1347f5;
+  border-bottom: 1px solid #1347f5;
+}
+.table_account {
+  padding-left: 25px !important;
+}
+.table_account img {
+  width: 18px;
+  height: 18px;
+  object-fit: cover;
+}
+
+.btn-action {
+  border: 2px solid #1347f5;
+  border-radius: 6px;
+  padding: 7px 10px;
+  width: 82px;
+  background: transparent;
+  display: inline-block;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-size: 400;
+}
+.status {
+  font-size: 10px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  padding: 9px 16px;
+  border-radius: 8px;
+  display: inline-block;
+  text-align: center;
+  min-width: 90px ;
+}
+.in_progress {
+  background: #1347f51a;
+  color: #1347f5;
+}
+.in_rejected {
+  color: #e5415e;
+  background: #fceff3;
+}
+.accepted {
+  color: #00b687;
+  background: #d6fff4;
+}
+.pending {
+  color: #ff955f;
+  background: #ffeee5;
+}
+.wfr {
+  color: #cda400;
+  background: #fff0b5;
+}

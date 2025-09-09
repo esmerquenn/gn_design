@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sidebar</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+
+    <link rel="icon" href="../assets/css/font.css" />
+    <link rel="stylesheet" href="../assets/css_esi/custom.css" />
+    <link rel="stylesheet" href="../assets/css_esi/colors.css" />
+    <link rel="stylesheet" href="../assets/css_esi/layout.css" />
+    <link rel="stylesheet" href="../assets/css_esi/table.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      .profile-card {
+        background-color: #fbfbfb;
+        border-radius: 20px;
+        padding: 30px;
+      }
+      .profile-field {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem 0;
+      }
+      .profile-field:last-child {
+        border-bottom: none;
+      }
+      .profile-label {
+        color: #000;
+        font-weight: 400;
+        font-size: 14px;
+      }
+      .profile-value {
+        color: #000;
+        font-weight: 400;
+        font-size: 14px;
+      }
+      .btn-edit {
+        color: #dc3545;
+        border-color: #dc3545;
+      }
+      .btn-edit:hover {
+        color: #fff;
+        background-color: #dc3545;
+        border-color: #dc3545;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sidebar-overlay" id="sidebar_overlay"></div>
+    <header>
+      <div>
+        <i id="kt_app_sidebar_mobile_toggle" class="fa-solid fa-bars d-lg-none text-light-blue-60 fs-4"></i>
+      </div>
+      <div class="text-light-blue-60 d-flex align-items-center gap-4">
+        <i class="fa-regular fa-envelope fs-4"></i>
+        <i class="fa-regular fa-bookmark fs-4"></i>
+        <i class="fa-regular fa-bell fs-4"></i>
+        <!-- <button class="bg-light-blue-60 text-gray-10 border-0 button-order">Create Order</button> -->
+      </div>
+    </header>
+
+    <nav class="kt_app_sidebar app-sidebar">
+      <button id="kt_app_sidebar_toggle" class="app-sidebar-toggle d-none">
+        <i class="bi bi-x"></i>
+      </button>
+      <div class="app-sidebar-menu">
+        <div class="p-30">
+          <div class="d-flex justify-content-center align-items-center pb-4 border-light-esi">
+            <a class="logo" href="/">
+              <img src="../assets/media/logos/logo-gn.png" alt="gn traffic" />
+            </a>
+          </div>
+        </div>
+        <menu>
+          <li class="navv_li_active">
+            <a href="/home"> <img src="../assets/media/nav_icon/home.png" alt="home gn traffic" /><span>Home</span> </a>
+          </li>
+          <li>
+            <a href="/home"> <img src="../assets/media/nav_icon/user.png" alt="profile" /><span>My Profile</span> </a>
+          </li>
+          <li>
+            <a href="/home"
+              ><img src="../assets/media/nav_icon/asssortment.png" alt="My Assortments" /><span>My Assortments</span>
+            </a>
+          </li>
+          <li>
+            <a href="/home"> <i class="fa-regular fa-clipboard"></i><span>My Orders</span> </a>
+          </li>
+          <li>
+            <a href="/home">
+              <img src="../assets/media/nav_icon/dollar.png" alt="my balance" />
+              <span>My Balance</span>
+            </a>
+          </li>
+          <li>
+            <a href="/home"> <img src="../assets/media/nav_icon/down.png" alt="pricing" /> <span>Pricing</span> </a>
+          </li>
+          <div class="p-30">
+            <div style="width: 100%; height: 1px" class="border-light-esi"></div>
+          </div>
+        </menu>
+        <ul class="navv_menu">
+          <li>
+            <a href="/home"> <span>Notifications </span><b>18</b> </a>
+          </li>
+          <li>
+            <a href="/home">
+              <span>All Bloggers</span>
+            </a>
+          </li>
+          <li>
+            <a href="/home">
+              <span>FAQ</span>
+            </a>
+          </li>
+          <li>
+            <a href="/home">
+              <span>News</span>
+            </a>
+          </li>
+        </ul>
+        <div class="p-30">
+          <div style="width: 100%; height: 1px" class="border-light-esi"></div>
+        </div>
+        <ul class="navv_menu">
+          <li>
+            <a href="/home">
+              <span style="display: flex; align-items: center; gap: 10px">
+                <img style="width: 16px" src="../assets/media/nav_icon/glob.png" alt="global" /> Language </span
+              ><i class="fa-solid fa-chevron-down"></i>
+            </a>
+          </li>
+          <li>
+            <a href="/home">
+              <span style="display: flex; align-items: center; gap: 10px">
+                <img style="width: 16px" src="../assets/media/nav_icon/money.png" alt="money" /> Currency </span
+              ><i class="fa-solid fa-chevron-down"></i>
+            </a>
+          </li>
+        </ul>
+        <div class="p-30">
+          <div style="width: 100%; height: 1px" class="border-light-esi"></div>
+        </div>
+        <menu>
+          <li>
+            <a href="/home"> <img src="../assets/media/nav_icon/logout.png" alt="gn log out" /> <span>Logout </span> </a>
+          </li>
+        </menu>
+      </div>
+    </nav>
+
+    <!-- buradan sonra -->
+    <div id="kt_app_content" class="container-p">
+      <div class="container-fluid d-flex flex-column flex-md-row gap-4">
+        <div style="max-height: 420px; max-width: 265px" class="bg-main-color user-account">
+          <div>
+            <div style="position: relative; display: inline-block">
+              <img
+                style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%"
+                src="../../assets/media/logos/user.jpg"
+                alt="user"
+              />
+              <img
+                style="position: absolute; right: 3px; top: 3px; width: 30px"
+                src="../../assets/media/nav_icon/tic.png"
+                alt="blue tic"
+              />
+            </div>
+            <div>
+              <h4 class="mt-20">Zhanna Predtechenskaya</h4>
+              <p class="text-light-blue-60 fw-bold">Influencer</p>
+              <p>Moscow, Russia</p>
+              <p>8.4 mln followers</p>
+            </div>
+          </div>
+          <div
+            style="font-size: 1.6rem; display: flex; align-items: center; gap: 20px; justify-content: center; margin-top: 15px"
+            class="icons text-light-blue-60"
+          >
+            <i class="fa-brands fa-vk"></i>
+            <i class="fa-brands fa-telegram"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-youtube"></i>
+          </div>
+        </div>
+        <div style="width: 75%" class="profile-card bg-light-blue-60">
+          <div class="row">
+            <div style="border-right: 1px solid #d6d6d6" class="col-md-6 d-flex">
+              <div class="col-md-8">
+                <div class="profile-field">
+                  <span class="profile-label">Country:</span>
+                  <span class="profile-value">Russia, Moscow</span>
+                </div>
+                <div class="profile-field">
+                  <span class="profile-label">Country:</span>
+                  <span class="profile-value">Russia, Moscow</span>
+                </div>
+                <div class="profile-field">
+                  <span class="profile-label">Contact Phone:</span>
+                  <span class="profile-value">+7 (928) 900-11-19</span>
+                </div>
+                <div class="profile-field">
+                  <span class="profile-label">Added:</span>
+                  <span class="profile-value">11/04/2025 17:59</span>
+                </div>
+                <div class="profile-field">
+                  <span class="profile-label">Updated:</span>
+                  <span class="profile-value">11/04/2025 17:59</span>
+                </div>
+                <div class="profile-field">
+                  <span class="profile-label">Date of birth:</span>
+                  <span class="profile-value">31/01/1993</span>
+                </div>
+                <div class="profile-field">
+                  <span class="profile-label">Role:</span>
+                  <span class="profile-value">Influencer</span>
+                </div>
+              </div>
+              <div class="col-md-3 d-flex align-items-start justify-content-end">
+                <button class="btn btn-outline-danger btn-sm text-red-40">
+                  <i class="fa-solid fa-pen" style="font-size: 0.8rem"></i> Edit
+                </button>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="profile-field">
+                <span class="profile-label">Telephone:</span>
+                <div class="d-flex align-items-center">
+                  <span class="profile-value me-3">+99450 567 90 50</span>
+                  <button class="btn btn-outline-danger btn-sm text-red-40">
+                    <i class="fa-solid fa-pen" style="font-size: 0.8rem"></i> Edit
+                  </button>
+                </div>
+              </div>
+              <div class="profile-field">
+                <span class="profile-label">Email:</span>
+                <div class="d-flex align-items-center">
+                  <span class="profile-value me-3">jandel@gmail.com</span>
+                  <button class="btn btn-outline-danger btn-sm text-red-40">
+                    <i class="fa-solid fa-pen" style="font-size: 0.8rem"></i> Edit
+                  </button>
+                </div>
+              </div>
+              <div class="profile-field">
+                <span class="profile-label">Password:</span>
+                <div class="d-flex align-items-center">
+                  <span class="profile-value me-3">•••••••••••</span>
+                  <button class="btn btn-outline-danger btn-sm text-red-40">
+                    <i class="fa-solid fa-pen" style="font-size: 0.8rem"></i> Edit
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const sidebar = document.querySelector(".kt_app_sidebar");
+      const mobileToggle = document.getElementById("kt_app_sidebar_mobile_toggle");
+      const sidebarToggle = document.getElementById("kt_app_sidebar_toggle");
+      const overlay = document.getElementById("sidebar_overlay");
+      const body = document.body;
+
+      function checkScreenSize() {
+        if (window.innerWidth <= 998) {
+          sidebar.classList.remove("mobile-open");
+          overlay.classList.remove("active");
+          body.classList.remove("no-scroll");
+        } else {
+          sidebar.classList.add("mobile-open");
+          overlay.classList.remove("active");
+          body.classList.remove("no-scroll");
+        }
+      }
+
+      function toggleSidebar() {
+        sidebar.classList.toggle("mobile-open");
+        overlay.classList.toggle("active");
+
+        if (sidebar.classList.contains("mobile-open")) {
+          body.classList.add("no-scroll");
+        } else {
+          body.classList.remove("no-scroll");
+        }
+      }
+
+      function closeSidebar() {
+        sidebar.classList.remove("mobile-open");
+        overlay.classList.remove("active");
+        body.classList.remove("no-scroll");
+      }
+
+      mobileToggle.addEventListener("click", toggleSidebar);
+
+      sidebarToggle.addEventListener("click", closeSidebar);
+
+      overlay.addEventListener("click", closeSidebar);
+
+      window.addEventListener("load", checkScreenSize);
+      window.addEventListener("resize", checkScreenSize);
+    </script>
+  </body>
+</html>
