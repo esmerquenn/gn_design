@@ -3,155 +3,94 @@
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Edit Profile</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <title>Current Projects</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
       body {
-        font-family: "Roboto", sans-serif;
+        font-family: "Inter", sans-serif;
       }
     </style>
   </head>
-  <body class="bg-gray-50 p-4">
-    <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
-      <div class="p-8">
-        <form>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label class="block text-sm font-medium text-gray-700" for="first_name">Full Name</label>
-              <input
-                class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                id="first_name"
-                name="first_name"
-                type="text"
-                value="Telli"
-              />
-            </div>
-            <div class="self-end">
-              <input
-                class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                id="last_name"
-                name="last_name"
-                type="text"
-                value="Isralfilbayli"
-              />
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-700" for="country">Country</label>
-              <div class="mt-1 relative">
-                <select
-                  class="appearance-none block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  id="country"
-                  name="country"
-                >
-                  <option>Russia</option>
-                  <option>USA</option>
-                  <option>Canada</option>
-                </select>
-                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                  <span class="material-icons">expand_more</span>
-                </div>
-              </div>
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-700" for="city">City</label>
-              <div class="mt-1 relative">
-                <select
-                  class="appearance-none block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  id="city"
-                  name="city"
-                >
-                  <option>Moscow</option>
-                  <option>New York</option>
-                  <option>Toronto</option>
-                </select>
-                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                  <span class="material-icons">expand_more</span>
-                </div>
-              </div>
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-700" for="contact_type">Contacts</label>
-              <div class="mt-1 relative">
-                <select
-                  class="appearance-none block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  id="contact_type"
-                  name="contact_type"
-                >
-                  <option>whatsapp</option>
-                  <option>Telegram</option>
-                  <option>Phone</option>
-                </select>
-                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                  <span class="material-icons">expand_more</span>
-                </div>
-              </div>
-            </div>
-            <div class="self-end">
-              <input
-                class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                id="contact_value"
-                name="contact_value"
-                type="text"
-                value="+792678987654567"
-              />
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-700" for="dob">Date of birth</label>
-              <input
-                class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                id="dob"
-                name="dob"
-                type="text"
-                value="1996-07-01"
-              />
-            </div>
-            <div>
-              <label class="block text-sm font-medium text-gray-700" for="gender">Gender</label>
-              <div class="mt-1 relative">
-                <select
-                  class="appearance-none block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  id="gender"
-                  name="gender"
-                >
-                  <option>Female</option>
-                  <option>Male</option>
-                  <option>Other</option>
-                </select>
-                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                  <span class="material-icons">expand_more</span>
-                </div>
-              </div>
-            </div>
+  <body class="bg-gray-50 flex items-center justify-center h-screen">
+    <div class="bg-white p-6 rounded-xl shadow-md w-full max-w-md">
+      <div class="flex items-center justify-between mb-8">
+        <div class="flex items-center">
+          <div class="bg-blue-100 p-3 rounded-lg mr-4">
+            <span class="material-icons text-blue-500">analytics</span>
           </div>
-          <div class="mt-6">
-            <label class="block text-sm font-medium text-gray-700" for="description">Description</label>
-            <textarea
-              class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-              id="description"
-              name="description"
-              rows="3"
-            >
-lorem ipsum do</textarea
-            >
-          </div>
-          <div class="mt-8 flex justify-end space-x-3">
-            <button
-              class="px-6 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              type="button"
-            >
-              Discard
-            </button>
-            <button
-              class="px-6 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-              type="submit"
-            >
-              Save
-            </button>
-          </div>
-        </form>
+          <h2 class="text-xl text-gray-500 font-medium">Current Projects</h2>
+        </div>
+        <div class="text-4xl font-bold text-blue-600">55</div>
+      </div>
+      <div class="flex items-center">
+        <div class="w-1/2">
+          <canvas id="projectsChart"></canvas>
+        </div>
+        <div class="w-1/2 pl-8">
+          <ul class="space-y-4">
+            <li class="flex items-center justify-between">
+              <div class="flex items-center">
+                <span class="w-3 h-3 bg-blue-600 rounded-full mr-3"></span>
+                <span class="text-gray-600">Completed</span>
+              </div>
+              <span class="font-semibold text-gray-800">5</span>
+            </li>
+            <li class="flex items-center justify-between">
+              <div class="flex items-center">
+                <span class="w-3 h-3 bg-blue-400 rounded-full mr-3"></span>
+                <span class="text-gray-600">Rejected</span>
+              </div>
+              <span class="font-semibold text-gray-800">7</span>
+            </li>
+            <li class="flex items-center justify-between">
+              <div class="flex items-center">
+                <span class="w-3 h-3 bg-orange-400 rounded-full mr-3"></span>
+                <span class="text-gray-600">WFR</span>
+              </div>
+              <span class="font-semibold text-gray-800">11</span>
+            </li>
+            <li class="flex items-center justify-between">
+              <div class="flex items-center">
+                <span class="w-3 h-3 bg-cyan-400 rounded-full mr-3"></span>
+                <span class="text-gray-600">Accepted</span>
+              </div>
+              <span class="font-semibold text-gray-800">8</span>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
+    <script>
+      const ctx = document.getElementById("projectsChart").getContext("2d");
+      const projectsChart = new Chart(ctx, {
+        type: "doughnut",
+        data: {
+          datasets: [
+            {
+              data: [25, 13, 5, 8],
+              backgroundColor: ["#3A4DE9", "#4393FF", "#FF955F", "#56CCF2"],
+              borderWidth: 5,
+              spacing: -20,
+              borderRadius: 20,
+              cutout: "75%",
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false,
+            },
+            tooltip: {
+              enabled: false,
+            },
+          },
+        },
+      });
+    </script>
   </body>
 </html>
