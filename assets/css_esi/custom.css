@@ -71,7 +71,6 @@ nav {
 header {
   padding: 25px 16px;
   background-color: white;
-  /* box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1); */
   position: sticky;
   top: 0;
   z-index: 98;
@@ -87,11 +86,13 @@ header {
 .user-account {
   padding: 30px;
   border-radius: 20px;
-  /* background: lightblue !important; */
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+.user-account-w{
+  max-height: 420px; 
 }
 .user-account p {
   font-size: 16px;
@@ -100,7 +101,7 @@ header {
 .btn-action2 {
   border: 2px solid #1347f5;
   border-radius: 12px;
-  padding: 12.5px;
+  padding: 8px;
   background: transparent;
   display: inline-block;
   font-family: "Inter", sans-serif;
@@ -108,7 +109,26 @@ header {
   font-size: 600 !important;
   width: 100%;
 }
-
+.btn-action3 {
+  border: 2px solid #1347f5;
+  border-radius: 12px;
+  padding: 8px;
+  display: inline-block;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-size: 600 !important;
+  width: 100%;
+}
+.btn-action4 {
+  border: none;
+  border-radius: 6px;
+  padding: 8px;
+  display: inline-block;
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-size: 600 !important;
+  width: 100%;
+}
 .month_earnings_chart {
   border-radius: 20px;
   height: 350px;
@@ -121,6 +141,10 @@ header {
   justify-content: space-between;
 }
 @media (min-width: 998px) {
+  .btn-action2, .btn-action3 {
+    border-radius: 12px;
+    padding: 12.5px;
+  }
   .grid-main {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 20px;
@@ -135,7 +159,6 @@ header {
   header {
     padding: 16px 50px;
   }
-  
 
   .card-main {
     flex-direction: column;

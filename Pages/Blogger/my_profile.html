@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sidebar</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+
+    <link rel="icon" href="../../assets/css/font.css" />
+    <link rel="stylesheet" href="../../assets/css_esi/custom.css" />
+    <link rel="stylesheet" href="../../assets/css_esi/colors.css" />
+    <link rel="stylesheet" href="../../assets/css_esi/layout.css" />
+    <link rel="stylesheet" href="../../assets/css_esi/table.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      .profile-card {
+        background-color: #fbfbfb;
+        border-radius: 20px;
+        padding: 15px;
+        width: 100%;
+      }
+      .profile-field {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.75rem 0;
+      }
+      .profile-field:last-child {
+        border-bottom: none;
+      }
+      .profile-label {
+        color: #000;
+        font-weight: 400;
+        font-size: 14px;
+      }
+      .profile-value {
+        color: #000;
+        font-weight: 400;
+        font-size: 14px;
+      }
+      .btn-edit {
+        color: #dc3545;
+        border-color: #dc3545;
+      }
+      .btn-edit:hover {
+        color: #fff;
+        background-color: #dc3545;
+        border-color: #dc3545;
+      }
+      .grid_input {
+        margin-bottom: 20px;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px 20px;
+      }
+      .grid_input2 {
+        margin-bottom: 20px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px 20px;
+      }
+      .grid_input3 {
+        margin-bottom: 13px;
+        display: grid;
+        grid-template-columns: 1fr;
+        row-gap: 10px;
+      }
+      .edit_input {
+        border: 1px solid #979797;
+        background: #fff;
+        border-radius: 12px;
+        padding: 12px 15px;
+        font-size: 14px;
+        font-weight: 400;
+        width: 100%;
+        outline: none;
+      }
+      .edit_user_info {
+        width: 100%;
+        padding: 12px;
+        margin-block: 12px;
+      }
+
+      .border_user {
+        border-bottom: 1px solid #d6d6d6;
+        padding-bottom: 10px;
+      }
+      @media (min-width: 998px) {
+        .edit_input {
+          padding: 14px 20px;
+        }
+        .border_user {
+          border: none;
+          border-right: 1px solid #d6d6d6;
+        }
+        .edit_user_info {
+          width: initial;
+          padding: 5px 10px;
+          margin-block: 0;
+        }
+        .profile-card {
+          padding: 30px;
+          width: 80%;
+        }
+        .grid_input {
+          margin-bottom: 20px;
+          grid-template-columns: 1fr 1fr;
+          gap: 10px 20px;
+        }
+        .grid_input_label,
+        .grid_input_textarea {
+          grid-column: 1 / span 2;
+        }
+        .info_user {
+          display: flex;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sidebar-overlay" id="sidebar_overlay"></div>
+    <header>
+      <div>
+        <i id="kt_app_sidebar_mobile_toggle" class="fa-solid fa-bars d-lg-none text-light-blue-60 fs-4"></i>
+      </div>
+      <div class="text-light-blue-60 d-flex align-items-center gap-4">
+        <i class="fa-regular fa-envelope fs-4"></i>
+        <i class="fa-regular fa-bookmark fs-4"></i>
+        <i class="fa-regular fa-bell fs-4"></i>
+        <!-- <button class="bg-light-blue-60 text-gray-10 border-0 button-order">Create Order</button> -->
+      </div>
+    </header>
+
+    <nav class="kt_app_sidebar app-sidebar">
+      <button id="kt_app_sidebar_toggle" class="app-sidebar-toggle d-none">
+        <i class="bi bi-x"></i>
+      </button>
+      <div class="app-sidebar-menu">
+        <div class="p-30">
+          <div class="d-flex justify-content-center align-items-center pb-4 border-light-esi">
+            <a class="logo" href="/">
+              <img src="../../assets/media/logos/logo-gn.png" alt="gn traffic" />
+            </a>
+          </div>
+        </div>
+        <menu>
+          <li class="navv_li_active">
+            <a href="/home"> <img src="../../assets/media/nav_icon/home.png" alt="home gn traffic" /><span>Home</span> </a>
+          </li>
+          <li>
+            <a href="/home"> <img src="../../assets/media/nav_icon/user.png" alt="profile" /><span>My Profile</span> </a>
+          </li>
+          <li>
+            <a href="/home"
+              ><img src="../../assets/media/nav_icon/asssortment.png" alt="My Assortments" /><span>My Assortments</span>
+            </a>
+          </li>
+          <li>
+            <a href="/home"> <i class="fa-regular fa-clipboard"></i><span>My Orders</span> </a>
+          </li>
+          <li>
+            <a href="/home">
+              <img src="../../assets/media/nav_icon/dollar.png" alt="my balance" />
+              <span>My Balance</span>
+            </a>
+          </li>
+          <li>
+            <a href="/home"> <img src="../../assets/media/nav_icon/down.png" alt="pricing" /> <span>Pricing</span> </a>
+          </li>
+          <div class="p-30">
+            <div style="width: 100%; height: 1px" class="border-light-esi"></div>
+          </div>
+        </menu>
+        <ul class="navv_menu">
+          <li>
+            <a href="/home"> <span>Notifications </span><b>18</b> </a>
+          </li>
+          <li>
+            <a href="/home">
+              <span>All Bloggers</span>
+            </a>
+          </li>
+          <li>
+            <a href="/home">
+              <span>FAQ</span>
+            </a>
+          </li>
+          <li>
+            <a href="/home">
+              <span>News</span>
+            </a>
+          </li>
+        </ul>
+        <div class="p-30">
+          <div style="width: 100%; height: 1px" class="border-light-esi"></div>
+        </div>
+        <ul class="navv_menu">
+          <li>
+            <a href="/home">
+              <span style="display: flex; align-items: center; gap: 10px">
+                <img style="width: 16px" src="../../assets/media/nav_icon/glob.png" alt="global" /> Language </span
+              ><i class="fa-solid fa-chevron-down"></i>
+            </a>
+          </li>
+          <li>
+            <a href="/home">
+              <span style="display: flex; align-items: center; gap: 10px">
+                <img style="width: 16px" src="../../assets/media/nav_icon/money.png" alt="money" /> Currency </span
+              ><i class="fa-solid fa-chevron-down"></i>
+            </a>
+          </li>
+        </ul>
+        <div class="p-30">
+          <div style="width: 100%; height: 1px" class="border-light-esi"></div>
+        </div>
+        <menu>
+          <li>
+            <a href="/home"> <img src="../../assets/media/nav_icon/logout.png" alt="gn log out" /> <span>Logout </span> </a>
+          </li>
+        </menu>
+      </div>
+    </nav>
+
+    <!-- buradan sonra -->
+    <div id="kt_app_content" class="container-p">
+      <div class="container-fluid d-flex flex-column flex-md-row gap-4">
+        <div class="bg-main-color user-account user-account-w">
+          <div>
+            <div style="position: relative; display: inline-block">
+              <img
+                id="profileImage"
+                style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%"
+                src="../../assets/media/logos/user.jpg"
+                alt="user"
+              />
+              <img
+                style="position: absolute; right: 3px; top: 3px; width: 30px"
+                src="../../assets/media/nav_icon/tic.png"
+                alt="blue tic"
+              />
+              <div
+                class="bg-red-10"
+                style="
+                  position: absolute;
+                  right: 0;
+                  bottom: 10px;
+                  border-radius: 100%;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  width: 22px;
+                  height: 22px;
+                "
+                onclick="document.getElementById('fileInput').click();"
+              >
+                <i class="fa-solid fa-pen text-red-40" style="font-size: 0.6rem"></i>
+              </div>
+              <input type="file" id="fileInput" accept="image/*" style="display: none" onchange="previewImage(event)" />
+            </div>
+            <div>
+              <h4 class="mt-20">Zhanna Predtechenskaya</h4>
+              <p class="text-light-blue-60 fw-bold">Influencer</p>
+              <p>Moscow, Russia</p>
+              <p>8.4 mln followers</p>
+            </div>
+          </div>
+          <div
+            style="font-size: 1.6rem; display: flex; align-items: center; gap: 20px; justify-content: center; margin-top: 15px"
+            class="icons text-light-blue-60"
+          >
+            <i class="fa-brands fa-vk"></i>
+            <i class="fa-brands fa-telegram"></i>
+            <i class="fa-brands fa-instagram"></i>
+            <i class="fa-brands fa-youtube"></i>
+          </div>
+        </div>
+        <div class="profile-card">
+          <div class="row">
+            <div id="info_user" class="col-md-6 border_user info_user">
+              <div class="col-12 col-md-8">
+                <div class="profile-field">
+                  <span class="profile-label">Country:</span>
+                  <span class="profile-value">Russia, Moscow</span>
+                </div>
+                <div class="profile-field">
+                  <span class="profile-label">Country:</span>
+                  <span class="profile-value">Russia, Moscow</span>
+                </div>
+                <div class="profile-field">
+                  <span class="profile-label">Contact Phone:</span>
+                  <span class="profile-value">+7 (928) 900-11-19</span>
+                </div>
+                <div class="profile-field">
+                  <span class="profile-label">Added:</span>
+                  <span class="profile-value">11/04/2025 17:59</span>
+                </div>
+                <div class="profile-field">
+                  <span class="profile-label">Updated:</span>
+                  <span class="profile-value">11/04/2025 17:59</span>
+                </div>
+                <div class="profile-field">
+                  <span class="profile-label">Date of birth:</span>
+                  <span class="profile-value">31/01/1993</span>
+                </div>
+                <div class="profile-field">
+                  <span class="profile-label">Role:</span>
+                  <span class="profile-value">Influencer</span>
+                </div>
+              </div>
+              <div style="padding-top: 0.75rem" class="col-12 col-md-3 d-flex align-items-start justify-content-end">
+                <button class="btn btn-outline-danger btn-sm text-red-40 edit_user_info fw-semibold">
+                  <i class="fa-solid fa-pen" style="font-size: 0.8rem"></i> Edit
+                </button>
+              </div>
+            </div>
+            <div id="edit_form_user" style="display: none" class="col-md-6 border_user">
+              <div>
+                <div class="grid_input">
+                  <label class="d-block grid_input_label" for="first_name">Full Name</label>
+                  <input class="edit_input" id="first_name" name="first_name" type="text" value="Telli" />
+                  <input class="edit_input" id="last_name" name="last_name" type="text" value="Eyvazova" />
+                </div>
+                <div class="grid_input">
+                  <div>
+                    <label class="d-block mb-2" for="first_name">Country</label>
+                    <input class="edit_input" id="first_name" name="first_name" type="text" value="Telli" />
+                  </div>
+                  <div>
+                    <label class="d-block mb-2" for="first_name">City</label>
+                    <input class="edit_input" id="first_name" name="first_name" type="text" value="Telli" />
+                  </div>
+                </div>
+                <div class="grid_input2">
+                  <label class="d-block mb-2" style="grid-column: 1 / span 2" for="first_name">Contacts</label>
+                  <input class="edit_input" id="first_name" name="first_name" type="text" value="Telli" />
+                  <input class="edit_input" id="first_name" name="first_name" type="text" value="Telli" />
+                </div>
+                <div class="grid_input2">
+                  <div>
+                    <label class="d-block mb-2" for="first_name">Date of birth</label>
+                    <input class="edit_input" id="first_name" name="first_name" type="text" value="Telli" />
+                  </div>
+                  <div>
+                    <label class="d-block mb-2" for="first_name">Gender</label>
+                    <input class="edit_input" id="first_name" name="first_name" type="text" value="Telli" />
+                  </div>
+                </div>
+                <div class="grid_input">
+                  <label class="d-block" for="first_name">Description</label>
+                  <textarea class="edit_input grid_input_textarea" name="" id="" placeholder="About Company"></textarea>
+                </div>
+                <div class="grid_input">
+                  <div>
+                    <button class="btn-action2 text-light-blue-60 bg-white">Discard</button>
+                  </div>
+                  <div>
+                    <button class="btn-action3 text-white bg-light-blue-60">Save</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div id="info_phone" style="border-bottom: 1px solid #d6d6d6; padding-block: 20px" class="profile-field">
+                <span class="profile-label">Telephone:</span>
+                <div class="d-flex align-items-center">
+                  <span class="profile-value me-3">+99450 567 90 50</span>
+
+                  <button class="btn btn-outline-danger btn-sm text-red-40 edit_user_phone fw-semibold">
+                    <i class="fa-solid fa-pen" style="font-size: 0.8rem"></i> Edit
+                  </button>
+                </div>
+              </div>
+              <div>
+                <div
+                  id="edit_form_phone"
+                  style="display: none; width: 100%; border-bottom: 1px solid #d6d6d6; padding-bottom: 20px"
+                  class="p-md-3"
+                >
+                  <div class="grid_input3">
+                    <label class="d-block grid_input_label" style="font-weight: 600" for="new_phone">New Phone</label>
+                    <input
+                      style="width: 100% !important; margin: 0 !important"
+                      class="edit_input"
+                      id="new_phone"
+                      name="new_phone"
+                      type="text"
+                      value="Telli"
+                    />
+                  </div>
+                  <span style="font-size: 12px; font-weight: 400">
+                    <i class="fa-solid fa-circle-info"></i>
+                    We’ll send you SMS code to move forward
+                  </span>
+                  <div class="mt-3">
+                    <div>
+                      <button class="btn-action3 text-white bg-light-blue-60">Get Code</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="info_email" style="border-bottom: 1px solid #d6d6d6; padding-block: 20px" class="profile-field">
+                <span class="profile-label">Email:</span>
+                <div class="d-flex align-items-center">
+                  <span class="profile-value me-3">jandel@gmail.com</span>
+                  <button class="btn btn-outline-danger btn-sm text-red-40 edit_user_email fw-semibold">
+                    <i class="fa-solid fa-pen" style="font-size: 0.8rem"></i> Edit
+                  </button>
+                </div>
+              </div>
+              <div>
+                <div
+                  id="edit_form_email"
+                  style="display: none; width: 100%; border-bottom: 1px solid #d6d6d6; padding-block: 20px"
+                  class="p-md-3"
+                >
+                  <div class="grid_input3">
+                    <label class="d-block grid_input_label" style="font-weight: 600" for="new_phone">New Email</label>
+                    <input
+                      style="width: 100% !important; margin: 0 !important"
+                      class="edit_input"
+                      id="new_phone"
+                      name="new_phone"
+                      type="text"
+                      value="Telli"
+                    />
+                  </div>
+                  <span style="font-size: 12px; font-weight: 400">
+                    <i class="fa-solid fa-circle-info"></i>
+                    We’ll send you Email code to move forward
+                  </span>
+                  <div class="mt-3">
+                    <div>
+                      <button class="btn-action3 text-white bg-light-blue-60">Get Code</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="info_password" style="padding-block: 20px" class="profile-field">
+                <span class="profile-label">Password:</span>
+                <div class="d-flex align-items-center">
+                  <span class="profile-value me-3">•••••••••••</span>
+                  <button class="btn btn-outline-danger btn-sm text-red-40 edit_user_password fw-semibold">
+                    <i class="fa-solid fa-pen" style="font-size: 0.8rem"></i> Edit
+                  </button>
+                </div>
+              </div>
+              <div>
+                <div
+                  id="edit_form_password"
+                  style="display: none; width: 100%; padding-block: 20px"
+                  class="p-md-3"
+                >
+                  <div class="grid_input3">
+                    <label class="d-block grid_input_label" for="new_phone">Current password</label>
+                    <input
+                      style="width: 100% !important; margin: 0 !important"
+                      class="edit_input"
+                      id="new_phone"
+                      name="new_phone"
+                      type="text"
+                      value="Telli"
+                    />
+                  </div>
+                  <div class="grid_input3">
+                    <label class="d-block grid_input_label" for="new_phone">New password</label>
+                    <input
+                      style="width: 100% !important; margin: 0 !important"
+                      class="edit_input"
+                      id="new_phone"
+                      name="new_phone"
+                      type="text"
+                      value="Telli"
+                    />
+                  </div>
+                  <span style="font-size: 10px; font-weight: 400; color: #989898">
+                    Use 8 or more characters with a mix of letters, numbers&symbols</span
+                  >
+                  <div class="grid_input3 mt-2">
+                    <label class="d-block grid_input_label" for="new_phone">Repeat password</label>
+                    <input
+                      style="width: 100% !important; margin: 0 !important"
+                      class="edit_input"
+                      id="new_phone"
+                      name="new_phone"
+                      type="text"
+                      value="Telli"
+                    />
+                  </div>
+                  <div class="mt-3">
+                    <div>
+                      <button class="btn-action3 text-white bg-light-blue-60">Get Code</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function previewImage(event) {
+        const file = event.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            document.getElementById("profileImage").src = e.target.result;
+          };
+          reader.readAsDataURL(file);
+        }
+      }
+    </script>
+    <script>
+      const edit_user_info = document.querySelector(".edit_user_info");
+      const info_user = document.querySelector("#info_user");
+      const edit_form_user = document.querySelector("#edit_form_user");
+      edit_user_info.onclick = function () {
+        console.log(edit_form_user);
+
+        edit_form_user.style.display = "flex";
+        info_user.style.display = "none";
+      };
+      const edit_user_phone = document.querySelector(".edit_user_phone");
+      const info_phone = document.querySelector("#info_phone");
+      const edit_form_phone = document.querySelector("#edit_form_phone");
+
+      edit_user_phone.onclick = function () {
+        edit_form_phone.style.display = "grid";
+        info_phone.style.display = "none";
+      };
+      const edit_user_email = document.querySelector(".edit_user_email");
+      const info_email = document.querySelector("#info_email");
+      const edit_form_email = document.querySelector("#edit_form_email");
+
+      edit_user_email.onclick = function () {
+        edit_form_email.style.display = "grid";
+        info_email.style.display = "none";
+      };
+      const edit_user_password = document.querySelector(".edit_user_password");
+      const info_password = document.querySelector("#info_password");
+      const edit_form_password = document.querySelector("#edit_form_password");
+
+      edit_user_password.onclick = function () {
+        edit_form_password.style.display = "grid";
+        info_password.style.display = "none";
+      };
+    </script>
+    <script>
+      const sidebar = document.querySelector(".kt_app_sidebar");
+      const mobileToggle = document.getElementById("kt_app_sidebar_mobile_toggle");
+      const sidebarToggle = document.getElementById("kt_app_sidebar_toggle");
+      const overlay = document.getElementById("sidebar_overlay");
+      const body = document.body;
+
+      function checkScreenSize() {
+        if (window.innerWidth <= 998) {
+          sidebar.classList.remove("mobile-open");
+          overlay.classList.remove("active");
+          body.classList.remove("no-scroll");
+        } else {
+          sidebar.classList.add("mobile-open");
+          overlay.classList.remove("active");
+          body.classList.remove("no-scroll");
+        }
+      }
+
+      function toggleSidebar() {
+        sidebar.classList.toggle("mobile-open");
+        overlay.classList.toggle("active");
+
+        if (sidebar.classList.contains("mobile-open")) {
+          body.classList.add("no-scroll");
+        } else {
+          body.classList.remove("no-scroll");
+        }
+      }
+
+      function closeSidebar() {
+        sidebar.classList.remove("mobile-open");
+        overlay.classList.remove("active");
+        body.classList.remove("no-scroll");
+      }
+
+      mobileToggle.addEventListener("click", toggleSidebar);
+
+      sidebarToggle.addEventListener("click", closeSidebar);
+
+      overlay.addEventListener("click", closeSidebar);
+
+      window.addEventListener("load", checkScreenSize);
+      window.addEventListener("resize", checkScreenSize);
+    </script>
+  </body>
+</html>

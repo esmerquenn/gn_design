@@ -3,141 +3,154 @@
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>User Profile</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <title>Edit Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
     <style>
       body {
-        font-family: "Inter", sans-serif;
+        font-family: "Roboto", sans-serif;
       }
     </style>
   </head>
-  <body class="bg-gray-50 p-6">
-    <div class="container mx-auto">
-      <div class="flex items-center justify-between mb-8">
-        <h1 class="text-2xl font-bold text-gray-800">My Profile - Personal Information</h1>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div class="md:col-span-1">
-          <div class="bg-white rounded-2xl p-6 shadow-sm flex flex-col items-center">
-            <div class="relative">
-              <img
-                alt="Profile picture of Zhanna Predtechenskaya"
-                class="w-32 h-32 rounded-full object-cover"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuQv1EWljfi96n3sdiBpqV40JxsOWnggPWG74UYYcuqlFzaORVZ-kacueZJ1NAw7pAhCcAq2EijLWAycvnXAP1_fPotTrHC9Ymg4nl237kdvLvHtSfb48jElpPdNoNUZvSosTds-oAf2E7QmNYvt8VO5SUISGzkF2tAEWttsexdpfbe-3Ld09UhbgOP5yVNFkINvCEl5rZ8dUcQPkYsamLnSR8k-A1A1v3CcOB7XbUzHu0pZtE0jDXs_uPynRTBas5poPGhWB6nLJU"
+  <body class="bg-gray-50 p-4">
+    <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl">
+      <div class="p-8">
+        <form>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700" for="first_name">Full Name</label>
+              <input
+                class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                id="first_name"
+                name="first_name"
+                type="text"
+                value="Telli"
               />
-              <span
-                class="absolute top-1 right-1 block h-6 w-6 rounded-full bg-blue-500 text-white flex items-center justify-center"
-              >
-                <span class="material-icons text-sm">done</span>
-              </span>
             </div>
-            <h2 class="text-xl font-bold mt-4 text-gray-800">Zhanna Predtechenskaya</h2>
-            <p class="text-gray-500 mt-1">Influencer</p>
-            <p class="text-gray-500 mt-1">Moscow, Russia</p>
-            <p class="text-gray-600 font-semibold mt-2">8.4 mln followers</p>
-            <div class="flex space-x-3 mt-6">
-              <a class="w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center" href="#">
-                <span class="material-icons">send</span>
-              </a>
-              <a class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center" href="#">
-                <span class="material-icons">facebook</span>
-              </a>
-              <a class="w-10 h-10 rounded-full bg-blue-400 text-white flex items-center justify-center" href="#">
-                <span class="material-icons">tiktok</span>
-              </a>
-              <a
-                class="w-10 h-10 rounded-full bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 text-white flex items-center justify-center"
-                href="#"
-              >
-                <span class="material-icons">photo_camera</span>
-              </a>
+            <div class="self-end">
+              <input
+                class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                id="last_name"
+                name="last_name"
+                type="text"
+                value="Isralfilbayli"
+              />
             </div>
-          </div>
-        </div>
-        <div class="md:col-span-2">
-          <div class="bg-white rounded-2xl p-8 shadow-sm">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-8">
-              <div>
-                <div class="flex justify-between items-center py-4 border-b">
-                  <span class="text-gray-500">Full Name:</span>
-                  <span class="font-semibold text-gray-800">Telli Israfilbayli</span>
-                </div>
-                <div class="flex justify-between items-center py-4 border-b">
-                  <span class="text-gray-500">Country:</span>
-                  <span class="font-semibold text-gray-800">Russia, Moscow</span>
-                </div>
-                <div class="flex justify-between items-center py-4 border-b">
-                  <span class="text-gray-500">Contact Phone:</span>
-                  <span class="font-semibold text-gray-800">+7 (926) 900-11-19</span>
-                </div>
-                <div class="flex justify-between items-center py-4 border-b">
-                  <span class="text-gray-500">Added:</span>
-                  <span class="font-semibold text-gray-800">11/04/2025 17:59</span>
-                </div>
-                <div class="flex justify-between items-center py-4 border-b">
-                  <span class="text-gray-500">Updated:</span>
-                  <span class="font-semibold text-gray-800">11/04/2025 17:59</span>
-                </div>
-                <div class="flex justify-between items-center py-4 border-b">
-                  <span class="text-gray-500">Date of birth:</span>
-                  <span class="font-semibold text-gray-800">31/01/1993</span>
-                </div>
-                <div class="flex justify-between items-center py-4">
-                  <span class="text-gray-500">Role:</span>
-                  <span class="font-semibold text-gray-800">Influencer</span>
+            <div>
+              <label class="block text-sm font-medium text-gray-700" for="country">Country</label>
+              <div class="mt-1 relative">
+                <select
+                  class="appearance-none block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  id="country"
+                  name="country"
+                >
+                  <option>Russia</option>
+                  <option>USA</option>
+                  <option>Canada</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                  <span class="material-icons">expand_more</span>
                 </div>
               </div>
-              <div>
-                <div class="flex justify-between items-center py-4 border-b">
-                  <div class="flex-grow">
-                    <span class="text-gray-500">Telephone:</span>
-                    <span class="font-semibold text-gray-800 ml-2">+99450 567 90 50</span>
-                  </div>
-                  <button
-                    class="flex items-center text-red-500 border border-red-200 rounded-lg px-4 py-2 hover:bg-red-50 transition"
-                  >
-                    <span class="material-icons text-base mr-2">edit</span>
-                    Edit
-                  </button>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700" for="city">City</label>
+              <div class="mt-1 relative">
+                <select
+                  class="appearance-none block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  id="city"
+                  name="city"
+                >
+                  <option>Moscow</option>
+                  <option>New York</option>
+                  <option>Toronto</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                  <span class="material-icons">expand_more</span>
                 </div>
-                <div class="flex justify-between items-center py-4 border-b">
-                  <div class="flex-grow">
-                    <span class="text-gray-500">Email:</span>
-                    <span class="font-semibold text-gray-800 ml-2">jandel@gmail.com</span>
-                  </div>
-                  <button
-                    class="flex items-center text-red-500 border border-red-200 rounded-lg px-4 py-2 hover:bg-red-50 transition"
-                  >
-                    <span class="material-icons text-base mr-2">edit</span>
-                    Edit
-                  </button>
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700" for="contact_type">Contacts</label>
+              <div class="mt-1 relative">
+                <select
+                  class="appearance-none block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  id="contact_type"
+                  name="contact_type"
+                >
+                  <option>whatsapp</option>
+                  <option>Telegram</option>
+                  <option>Phone</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                  <span class="material-icons">expand_more</span>
                 </div>
-                <div class="flex justify-between items-center py-4 border-b">
-                  <div class="flex-grow">
-                    <span class="text-gray-500">Password:</span>
-                    <span class="font-semibold text-gray-800 ml-2">************</span>
-                  </div>
-                  <button
-                    class="flex items-center text-red-500 border border-red-200 rounded-lg px-4 py-2 hover:bg-red-50 transition"
-                  >
-                    <span class="material-icons text-base mr-2">edit</span>
-                    Edit
-                  </button>
-                </div>
-                <div class="flex justify-end pt-4">
-                  <button
-                    class="flex items-center text-red-500 border border-red-200 rounded-lg px-4 py-2 hover:bg-red-50 transition"
-                  >
-                    <span class="material-icons text-base mr-2">edit</span>
-                    Edit
-                  </button>
+              </div>
+            </div>
+            <div class="self-end">
+              <input
+                class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                id="contact_value"
+                name="contact_value"
+                type="text"
+                value="+792678987654567"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700" for="dob">Date of birth</label>
+              <input
+                class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                id="dob"
+                name="dob"
+                type="text"
+                value="1996-07-01"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700" for="gender">Gender</label>
+              <div class="mt-1 relative">
+                <select
+                  class="appearance-none block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  id="gender"
+                  name="gender"
+                >
+                  <option>Female</option>
+                  <option>Male</option>
+                  <option>Other</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                  <span class="material-icons">expand_more</span>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+          <div class="mt-6">
+            <label class="block text-sm font-medium text-gray-700" for="description">Description</label>
+            <textarea
+              class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              id="description"
+              name="description"
+              rows="3"
+            >
+lorem ipsum do</textarea
+            >
+          </div>
+          <div class="mt-8 flex justify-end space-x-3">
+            <button
+              class="px-6 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              type="button"
+            >
+              Discard
+            </button>
+            <button
+              class="px-6 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+              type="submit"
+            >
+              Save
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   </body>
