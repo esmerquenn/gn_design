@@ -25,6 +25,44 @@
       referrerpolicy="no-referrer"
     />
   </head>
+  <style>
+    .grid-orders {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 768px) {
+      .grid-orders {
+        gap: 20px;
+        grid-template-columns: repeat(2, 1fr);
+      }
+       .month_earnings_chart {
+        grid-column: 1 / span 3;
+      }
+    }
+    @media (min-width: 1200px) {
+      .grid-orders {
+        gap: 20px;
+        grid-template-columns: repeat(6, 1fr);
+      }
+      .current_projects {
+        grid-column: 3 / span 3;
+      }
+      .month_earnings_chart {
+        grid-column: 1 / span 2;
+      }
+    }
+     @media (min-width: 1260px) {
+      
+      .current_projects {
+        grid-column: 4/ span 2;
+      }
+      .month_earnings_chart {
+        grid-column: 1 / span 3;
+      }
+    }
+  </style>
   <body>
     <div class="sidebar-overlay" id="sidebar_overlay"></div>
     <header>
@@ -132,16 +170,9 @@
     <!-- buradan sonra -->
     <div id="kt_app_content" class="container-p">
       <h3 class="fw-semibold fs-5 mb-3">Order Statistics</h3>
-      <div style="display: grid; gap: 20px; grid-template-columns: repeat(6, 1fr); grid-template-rows: 1fr 1fr">
+      <div class="grid-orders">
         <div
-          style="
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            overflow: hidden;
-            grid-column: 1 / span 3;
-            grid-row: 1 / span 2;
-          "
+          style="display: flex; flex-direction: column; justify-content: space-between; overflow: hidden"
           class="bg-main-color month_earnings_chart p-4"
         >
           <div class="d-flex justify-content-between align-items-center mb-3">
@@ -170,12 +201,12 @@
             </div>
           </div>
         </div>
-        <div style="grid-column: 4 / span 2; grid-row: 1 / span 2; border-radius: 20px" class="bg-main-color p-4 text-center">
+        <div class="bg-main-color p-4 text-center br-20 current_projects">
           <div class="d-flex justify-content-between align-items-center mb-5">
             <h5 style="font-size: 16px; font-weight: 300; color: #595959">Current Projects</h5>
             <h2 class="text-primary fw-bold fs-4">55</h2>
           </div>
-          <div class="d-flex align-items-center gap-5">
+          <div class="d-flex align-items-center gap-1 gap-md-4">
             <div class="chart-container" style="height: 140px; width: 140px">
               <canvas id="projectsChart"></canvas>
             </div>
@@ -186,7 +217,15 @@
                     class="text-primary"
                     style="width: 6px; height: 6px; border-radius: 100%; background: red; display: inline-block"
                   ></span>
-                  <div style="display: inline-flex; align-items: center; justify-content: space-between; width: 120px;margin-left: 5px;">
+                  <div
+                    style="
+                      display: inline-flex;
+                      align-items: center;
+                      justify-content: space-between;
+                      width: 100px;
+                      margin-left: 5px;
+                    "
+                  >
                     <span>Completed</span> <span>5</span>
                   </div>
                 </li>
@@ -195,7 +234,15 @@
                     class="text-primary"
                     style="width: 6px; height: 6px; border-radius: 100%; background: blue; display: inline-block"
                   ></span>
-                  <div style="display: inline-flex; align-items: center; justify-content: space-between; width: 120px;margin-left: 5px;">
+                  <div
+                    style="
+                      display: inline-flex;
+                      align-items: center;
+                      justify-content: space-between;
+                      width: 100px;
+                      margin-left: 5px;
+                    "
+                  >
                     <span>Pending</span> <span>11</span>
                   </div>
                 </li>
@@ -204,7 +251,15 @@
                     class="text-primary"
                     style="width: 6px; height: 6px; border-radius: 100%; background: orange; display: inline-block"
                   ></span>
-                  <div style="display: inline-flex; align-items: center; justify-content: space-between; width: 120px; margin-left: 5px;">
+                  <div
+                    style="
+                      display: inline-flex;
+                      align-items: center;
+                      justify-content: space-between;
+                      width: 100px;
+                      margin-left: 5px;
+                    "
+                  >
                     <span>WFR</span> <span>4</span>
                   </div>
                 </li>
@@ -213,7 +268,15 @@
                     class="text-primary"
                     style="width: 6px; height: 6px; border-radius: 100%; background: lightblue; display: inline-block"
                   ></span>
-                  <div style="display: inline-flex; align-items: center; justify-content: space-between; width: 120px; margin-left: 5px;">
+                  <div
+                    style="
+                      display: inline-flex;
+                      align-items: center;
+                      justify-content: space-between;
+                      width: 100px;
+                      margin-left: 5px;
+                    "
+                  >
                     <span>Accepted</span> <span>6</span>
                   </div>
                 </li>
@@ -221,49 +284,51 @@
             </div>
           </div>
         </div>
-        <div style="grid-column: 6 / span 1" class="bg-main-color p-30-4 card-main">
-          <div class="d-flex align-items-center gap-2">
-            <div
-              style="
-                width: 40px;
-                height: 40px;
-                align-items: center;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-              "
-              class="bg-light-blue-10"
-            >
-              <img style="width: 20px; height: 20px" src="../../assets/media/nav_icon/balance.png" alt="balance" />
+        <div class="d-flex gap-3 flex-column">
+          <div class="bg-main-color p-30-4 card-main">
+            <div class="d-flex align-items-center gap-2">
+              <div
+                style="
+                  width: 40px;
+                  height: 40px;
+                  align-items: center;
+                  border-radius: 50%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+                class="bg-light-blue-10"
+              >
+                <img style="width: 20px; height: 20px" src="../../assets/media/nav_icon/balance.png" alt="balance" />
+              </div>
+              <span style="font-size: 18px; font-weight: 300">Balance</span>
             </div>
-            <span style="font-size: 18px; font-weight: 300">Balance</span>
+            <p style="font-size: 26px; font-weight: 800; padding: 0" class="text-light-blue-60">
+              7.138 <i class="fa-solid fa-ruble-sign"></i>
+            </p>
           </div>
-          <p style="font-size: 26px; font-weight: 800; padding: 0" class="text-light-blue-60">
-            7.138 <i class="fa-solid fa-ruble-sign"></i>
-          </p>
-        </div>
-        <div style="grid-row: 2 / span 1; grid-column: 6 / span 1" class="bg-main-color p-30-4 card-main">
-          <div class="d-flex align-items-center gap-2">
-            <div
-              style="
-                width: 40px;
-                height: 40px;
-                align-items: center;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-              "
-              class="bg-light-blue-10"
-            >
-              <img style="width: 20px; height: 20px" src="../../assets/media/nav_icon/balance.png" alt="balance" />
+          <div class="bg-main-color p-30-4 card-main">
+            <div class="d-flex align-items-center gap-2">
+              <div
+                style="
+                  width: 40px;
+                  height: 40px;
+                  align-items: center;
+                  border-radius: 50%;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+                class="bg-light-blue-10"
+              >
+                <img style="width: 20px; height: 20px" src="../../assets/media/nav_icon/balance.png" alt="balance" />
+              </div>
+              <span style="font-size: 18px; font-weight: 300">Balance</span>
             </div>
-            <span style="font-size: 18px; font-weight: 300">Balance</span>
+            <p style="font-size: 26px; font-weight: 800; padding: 0" class="text-light-blue-60">
+              7.138 <i class="fa-solid fa-ruble-sign"></i>
+            </p>
           </div>
-          <p style="font-size: 26px; font-weight: 800; padding: 0" class="text-light-blue-60">
-            7.138 <i class="fa-solid fa-ruble-sign"></i>
-          </p>
         </div>
       </div>
       <div class="mt-4">
