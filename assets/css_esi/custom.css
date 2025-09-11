@@ -130,6 +130,12 @@ header {
   font-size: 600 !important;
   width: 100%;
 }
+.btn-action5{
+  border: none;
+  border-radius: 6px;
+  padding: 6px;
+  min-width: 108px;
+}
 .month_earnings_chart {
   border-radius: 20px;
   height: 350px;

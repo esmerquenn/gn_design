@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Orders</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="icon" href="../../assets/css/font.css" />
+    <link rel="stylesheet" href="../../assets/css_esi/custom.css" />
+    <link rel="stylesheet" href="../../assets/css_esi/colors.css" />
+    <link rel="stylesheet" href="../../assets/css_esi/layout.css" />
+    <link rel="stylesheet" href="../../assets/css_esi/table.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      .swiper-slide img {
+        max-width: 100%;
+        height: auto;
+        background: red;
+      }
+      .tab-content {
+        padding: 20px;
+      }
+      .nav-tabs .nav-item.show .nav-link,
+      .nav-tabs .nav-link.active,
+      .nav-link:hover,
+      .nav-tabs .nav-link {
+        background: transparent !important;
+        border: none !important;
+        outline: none !important;
+        padding: 0 !important;
+      }
+      .nav-tabs .nav-link {
+        color: #8c8c8c;
+        font-weight: 600;
+        font-size: 14px;
+      }
+      .nav-tabs .nav-link.active {
+        color: #1347f5;
+        border-bottom: 2px solid #1347f5 !important;
+      }
+      /* .swiper-button-next:after, */
+      .swiper-button-prev {
+        left: -7px !important;
+      }
+      .swiper-button-next {
+        right: -7px !important;
+      }
+      .swiper-button-next:after,
+      .swiper-button-prev:after {
+        font-size: 26px !important;
+        font-weight: 700;
+      }
+      .activities_list {
+        li {
+          border-left: 2px solid #333;
+          padding: 0 0 30px 30px;
+          position: relative;
+        }
+      }
+      .acivites_dot {
+        border-radius: 100%;
+        width: 18px;
+        height: 18px;
+        position: absolute;
+        top: -1px;
+        left: -9.5px;
+      }
+      .last_li {
+        padding-bottom: 0 !important;
+        border-left: none !important;
+      }
+
+      .chat-messages {
+        height: 500px;
+        overflow-y: auto;
+      }
+      .chat-messages::-webkit-scrollbar {
+        display: none;
+      }
+      .message {
+        max-width: 60%;
+        margin-bottom: 10px;
+        padding: 12px;
+        font-size: 12px;
+        border-radius: 10px;
+      }
+      .sent {
+        background-color: #2186eb;
+        color: white;
+        display: flex;
+        align-items: flex-start;
+      }
+      .received {
+        background-color: #f4f8ff;
+        color: black;
+        margin-left: auto;
+      }
+
+      /* //////////////////////////////// */
+      .steps-container {
+        margin: 50px auto;
+        text-align: center;
+      }
+      .steps-line {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        margin-bottom: 20px;
+      }
+      .step {
+        flex: 1;
+        text-align: center;
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .step-circle {
+        width: 30px;
+        height: 30px;
+        border: 2px solid #1347f5;
+        background: #fff;
+        color: #1347f5;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+      }
+      .step-line {
+        position: absolute;
+        top: 15px;
+        left: 15%;
+        right: 15%;
+        height: 2px;
+        background-color: #1347f5;
+        z-index: 0;
+      }
+      .step-text {
+        margin-top: 10px;
+        color: #1347f5;
+        font-size: 14px;
+        font-weight: 500;
+        max-width: 120px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sidebar-overlay" id="sidebar_overlay"></div>
+    <header>
+      <div>
+        <i id="kt_app_sidebar_mobile_toggle" class="fa-solid fa-bars d-lg-none text-light-blue-60 fs-4"></i>
+      </div>
+      <div class="text-light-blue-60 d-flex align-items-center gap-4">
+        <i class="fa-regular fa-envelope fs-4"></i>
+        <i class="fa-regular fa-bookmark fs-4"></i>
+        <i class="fa-regular fa-bell fs-4"></i>
+        <!-- <button class="bg-light-blue-60 text-gray-10 border-0 button-order">Create Order</button> -->
+      </div>
+    </header>
+
+    <nav class="kt_app_sidebar app-sidebar">
+      <button id="kt_app_sidebar_toggle" class="app-sidebar-toggle d-none">
+        <i class="bi bi-x"></i>
+      </button>
+      <div class="app-sidebar-menu">
+        <div class="p-30">
+          <div class="d-flex justify-content-center align-items-center pb-4 border-light-esi">
+            <a class="logo" href="/">
+              <img src="../../assets/media/logos/logo-gn.png" alt="gn traffic" />
+            </a>
+          </div>
+        </div>
+        <menu>
+          <li class="navv_li_active">
+            <a href="/home"> <img src="../../assets/media/nav_icon/home.png" alt="home gn traffic" /><span>Home</span> </a>
+          </li>
+          <li>
+            <a href="/home"> <img src="../../assets/media/nav_icon/user.png" alt="profile" /><span>My Profile</span> </a>
+          </li>
+          <li>
+            <a href="/home"
+              ><img src="../../assets/media/nav_icon/asssortment.png" alt="My Assortments" /><span>My Assortments</span>
+            </a>
+          </li>
+          <li>
+            <a href="/home"> <i class="fa-regular fa-clipboard"></i><span>My Orders</span> </a>
+          </li>
+          <li>
+            <a href="/home">
+              <img src="../../assets/media/nav_icon/dollar.png" alt="my balance" />
+              <span>My Balance</span>
+            </a>
+          </li>
+          <li>
+            <a href="/home"> <img src="../../assets/media/nav_icon/down.png" alt="pricing" /> <span>Pricing</span> </a>
+          </li>
+          <div class="p-30">
+            <div style="width: 100%; height: 1px" class="border-light-esi"></div>
+          </div>
+        </menu>
+        <ul class="navv_menu">
+          <li>
+            <a href="/home"> <span>Notifications </span><b>18</b> </a>
+          </li>
+          <li>
+            <a href="/home">
+              <span>All Bloggers</span>
+            </a>
+          </li>
+          <li>
+            <a href="/home">
+              <span>FAQ</span>
+            </a>
+          </li>
+          <li>
+            <a href="/home">
+              <span>News</span>
+            </a>
+          </li>
+        </ul>
+        <div class="p-30">
+          <div style="width: 100%; height: 1px" class="border-light-esi"></div>
+        </div>
+        <ul class="navv_menu">
+          <li>
+            <a href="/home">
+              <span style="display: flex; align-items: center; gap: 10px">
+                <img style="width: 16px" src="../../assets/media/nav_icon/glob.png" alt="global" /> Language </span
+              ><i class="fa-solid fa-chevron-down"></i>
+            </a>
+          </li>
+          <li>
+            <a href="/home">
+              <span style="display: flex; align-items: center; gap: 10px">
+                <img style="width: 16px" src="../../assets/media/nav_icon/money.png" alt="money" /> Currency </span
+              ><i class="fa-solid fa-chevron-down"></i>
+            </a>
+          </li>
+        </ul>
+        <div class="p-30">
+          <div style="width: 100%; height: 1px" class="border-light-esi"></div>
+        </div>
+        <menu>
+          <li>
+            <a href="/home"> <img src="../../assets/media/nav_icon/logout.png" alt="gn log out" /> <span>Logout </span> </a>
+          </li>
+        </menu>
+      </div>
+    </nav>
+
+    <!-- buradan sonra -->
+    <div id="kt_app_content" class="container-p">
+      <div class="d-flex align-items-center gap-3 mb-4">
+        <h3 style="font-size: 18px" class="fw-semibold text-sm m-0">
+          <i style="transform: rotate(-90deg); font-size: 15px" class="fa-solid fa-arrow-turn-up rotate-90"></i> Detailed View
+        </h3>
+        <span class="text-light-blue-60 text-sm fw-medium">Order ID:#123456</span>
+      </div>
+      <div class="row gap-4 gap-md-0">
+        <div class="col-12 col-lg-6">
+          <article class="bg-main-color br-20 p-40-4">
+            <div style="border-bottom: 1px solid #eaeaea" class="d-flex justify-content-between pb-4">
+              <div class="d-flex gap-1">
+                <img
+                  src="../../assets/media/logos/img.jpg"
+                  alt="Pomegranate"
+                  style="width: 82px; border-radius: 10px"
+                  class="me-2"
+                />
+                <div>
+                  <span style="font-weight: 500; font-size: 14px">Pomegranate</span>
+                  <div style="font-size: 13px; font-weight: 400; color: #7d7d7d; margin-bottom: 10px">Fashion&Beauty</div>
+                  <div
+                    style="width: 90px; padding: 9px; border-radius: 8px; font-size: 10px; text-align: center"
+                    class="in_progress fw-medium"
+                  >
+                    Accepted
+                  </div>
+                </div>
+              </div>
+              <div>
+                <span style="font-weight: 500; font-size: 14px">21/07/2025</span>
+                <div style="font-size: 13px; font-weight: 400; color: #7d7d7d; margin-bottom: 10px">Deadline</div>
+              </div>
+            </div>
+            <div class="card-body">
+              <ul style="justify-content: space-between; padding: 16px" class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link active"
+                    id="description-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#description"
+                    type="button"
+                    role="tab"
+                  >
+                    Description
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link"
+                    id="activity-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#activity"
+                    type="button"
+                    role="tab"
+                  >
+                    Activity
+                  </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                  <button
+                    class="nav-link"
+                    id="contract-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#contract"
+                    type="button"
+                    role="tab"
+                  >
+                    Contract
+                  </button>
+                </li>
+              </ul>
+              <div style="min-height: 400px" class="tab-content px-2" id="myTabContent">
+                <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+                  <div class="row">
+                    <ul class="col-12 col-md-6">
+                      <li style="font-size: 13px; color: #7d7d7d; font-weight: 400; margin-bottom: 20px">
+                        <div style="font-size: 14px; font-weight: 500; color: #000">Type:</div>
+                        lorem ipsum dolor
+                      </li>
+                      <li style="font-size: 13px; color: #7d7d7d; font-weight: 400; margin-bottom: 20px">
+                        <div style="font-size: 14px; font-weight: 500; color: #000">Social network:</div>
+                        lorem ipsum dolor
+                      </li>
+                      <li style="font-size: 13px; color: #7d7d7d; font-weight: 400; margin-bottom: 20px">
+                        <div style="font-size: 14px; font-weight: 500; color: #000">Post type:</div>
+                        lorem ipsum dolor
+                      </li>
+                      <li style="font-size: 13px; color: #7d7d7d; font-weight: 400; margin-bottom: 20px">
+                        <div style="font-size: 14px; font-weight: 500; color: #000">Blogger Count:</div>
+                        lorem ipsum dolor
+                      </li>
+                      <li style="font-size: 13px; color: #7d7d7d; font-weight: 400; margin-bottom: 20px">
+                        <div style="font-size: 14px; font-weight: 500; color: #000">Follower Count:</div>
+                        lorem ipsum dolor
+                      </li>
+                      <li style="font-size: 13px; color: #7d7d7d; font-weight: 400; margin-bottom: 20px">
+                        <div style="font-size: 14px; font-weight: 500; color: #000">Category:</div>
+                        lorem ipsum dolor
+                      </li>
+                    </ul>
+                    <ul class="col-12 col-md-6">
+                      <li style="font-size: 13px; color: #7d7d7d; font-weight: 400; margin-bottom: 20px">
+                        <div style="font-size: 14px; font-weight: 500; color: #000">Price:</div>
+                        lorem ipsum dolor
+                      </li>
+                      <li style="font-size: 13px; color: #7d7d7d; font-weight: 400; margin-bottom: 20px">
+                        <div style="font-size: 14px; font-weight: 500; color: #000">Currency:</div>
+                        lorem ipsum dolor
+                      </li>
+                      <li style="font-size: 13px; color: #7d7d7d; font-weight: 400; margin-bottom: 20px">
+                        <div style="font-size: 14px; font-weight: 500; color: #000">Interaction type:</div>
+                        lorem ipsum dolor
+                      </li>
+                      <li style="font-size: 13px; color: #7d7d7d; font-weight: 400; margin-bottom: 20px">
+                        <div style="font-size: 14px; font-weight: 500; color: #000">Currency:</div>
+                        lorem ipsum dolor
+                      </li>
+                      <li style="font-size: 13px; color: #7d7d7d; font-weight: 400; margin-bottom: 20px">
+                        <div style="font-size: 14px; font-weight: 500; color: #000">Region:</div>
+                        lorem ipsum dolor
+                      </li>
+                      <li style="font-size: 13px; color: #7d7d7d; font-weight: 400; margin-bottom: 20px">
+                        <div style="font-size: 14px; font-weight: 500; color: #000">Status:</div>
+                        lorem ipsum dolor
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="mt-4">
+                    <div class="swiper mySwiper">
+                      <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                          <img style="border-radius: 12px" src="../../assets/media/logos/img.jpg" alt="Slide 1" />
+                        </div>
+                        <div class="swiper-slide">
+                          <img style="border-radius: 12px" src="../../assets/media/logos/img.jpg" alt="Slide 1" />
+                        </div>
+                        <div class="swiper-slide">
+                          <img style="border-radius: 12px" src="../../assets/media/logos/img.jpg" alt="Slide 1" />
+                        </div>
+                        <div class="swiper-slide">
+                          <img style="border-radius: 12px" src="../../assets/media/logos/img.jpg" alt="Slide 1" />
+                        </div>
+                        <div class="swiper-slide">
+                          <img style="border-radius: 12px" src="../../assets/media/logos/img.jpg" alt="Slide 1" />
+                        </div>
+                        <div class="swiper-slide">
+                          <img style="border-radius: 12px" src="../../assets/media/logos/img.jpg" alt="Slide 1" />
+                        </div>
+                        <div class="swiper-slide">
+                          <img style="border-radius: 12px" src="../../assets/media/logos/img.jpg" alt="Slide 1" />
+                        </div>
+                      </div>
+                      <div class="swiper-button-next"></div>
+                      <div class="swiper-button-prev"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="activity" role="tabpanel" aria-labelledby="activity-tab">
+                  <ul class="activities_list">
+                    <li>
+                      <div class="bg-light-yellow-60 acivites_dot"></div>
+                      Заказ был начат <span class="text-light-blue-60" style="border-bottom: 1px solid #1347f5"> компанией</span>
+                      <div style="color: #a9a9a9; font-size: 14px; font-weight: 400; margin-top: 10px">10.07.2025</div>
+                    </li>
+                    <li>
+                      <div class="bg-green-40 acivites_dot"></div>
+                      Заказ был начат <span class="text-light-blue-60" style="border-bottom: 1px solid #1347f5"> компанией</span>
+                      <div style="color: #a9a9a9; font-size: 14px; font-weight: 400; margin-top: 10px">10.07.2025</div>
+                    </li>
+                    <li>
+                      <div class="bg-red-40 acivites_dot"></div>
+                      Заказ был начат <span class="text-light-blue-60" style="border-bottom: 1px solid #1347f5"> компанией</span>
+                      <div style="color: #a9a9a9; font-size: 14px; font-weight: 400; margin-top: 10px">10.07.2025</div>
+                    </li>
+                    <li class="last_li">
+                      <div class="bg-light-yellow-60 acivites_dot"></div>
+                      Заказ был начат <span class="text-light-blue-60" style="border-bottom: 1px solid #1347f5"> компанией</span>
+                      <div style="color: #a9a9a9; font-size: 14px; font-weight: 400; margin-top: 10px">10.07.2025</div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="tab-pane fade" id="contract" role="tabpanel" aria-labelledby="contract-tab">
+                  <div class="d-flex justify-content-between">
+                    <h4 style="font-size: 16px; font-weight: 600">Contract</h4>
+                    <a href="#">
+                      <span class="text-light-blue-60" style="border-bottom: 2px solid #1347f5; font-weight: 500">Download </span>
+                      <img style="width: 20px" src="../../assets/media/nav_icon/download.png" alt="download" />
+                    </a>
+                  </div>
+                  <p style="font-size: 13px; color: #a9a9a9; font-weight: 400; line-height: 2">
+                    WHEREAS the first party desires to transfer money from Turkey into Syria within the frame of its humanitarian
+                    activities in the north of Idleb Governorate, Syria, and the second party has the proven capacity, experience
+                    and highest reasonable standard of financial due diligence to facilitate the transfers. The Parties agree to
+                    nominate one primary contact person to manage this account on daily basis and to collaborate as follows:
+                    ARTICLE 1. Objective of the Agreement 1.1. The first party intends to transfer money to people residing in
+                    areas outside of the control of the Government of Syria; 1.2. The second party has the proven capacity,
+                    experience and highest reasonable standard of diligence to facilitate the transfers. ARTICLE 2. Obligations of
+                    the first party 2.1 Apply the highest reasonable standard of diligence* to ensure that the money transferred
+                    under this agreeement is not transferred to any individual or entity listed as a Designated Terrorist; 2.2
+                    Coordinate what public statements / agree comms strategy will be made regarding the transfers that involve
+                    beneficiaries; 2.3 Inform the second party of the amount what public statements / agree comms strategy will be
+                    made regarding the transfers that involve beneficiaries; 2.3 Inform the second party of the amount
+                  </p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="col-12 col-lg-6">
+          <div class="" style="border-radius: 12px; overflow: hidden; border: 1px solid #d3e1fe">
+            <div class="d-flex justify-content-between align-items-center bg-main-color p-20-4">
+              <div class="d-flex gap-3 align-items-end">
+                <img
+                  src="../../assets/media/logos/img.jpg"
+                  alt="Pomegranate"
+                  style="width: 32px; border-radius: 100%"
+                  class="me-2"
+                />
+                <div>
+                  <span style="font-size: 16px; font-weight: 500">Leslie Alexander</span>
+                  <a class="d-flex gap-1" style="font-size: 12px; color: #989ba1"
+                    >Order ID: <span class="text-light-blue-60 fw-semibold">#123456</span></a
+                  >
+                </div>
+              </div>
+              <button class="btn btn-action3 w-25 py-2 text-light-blue-60" style="font-size: 12px !important">
+                Send Statistics
+              </button>
+            </div>
+            <!-- <div class="steps-container">
+              <h3 class="fs-5 mb-4">STEPS</h3>
+              <div class="steps-line">
+                <div class="step-line"></div>
+                <div class="step">
+                  <div class="step-circle">01</div>
+                  <div class="step-text">Communicate with the client</div>
+                </div>
+                <div class="step">
+                  <div class="step-circle">02</div>
+                  <div class="step-text">Send creatives before publishing</div>
+                </div>
+                <div class="step">
+                  <div class="step-circle">03</div>
+                  <div class="step-text">Send statistics after publishing</div>
+                </div>
+              </div>
+              <button class="btn btn-action4 bg-light-blue-60 text-white w-25 rounded-3 mt-3">Start a message</button>
+            </div> -->
+             <div class="p-3">
+              <div class="chat-messages">
+                <div class="d-flex mb-2">
+                  <img
+                    src="../../assets/media/logos/img.jpg"
+                    alt="User"
+                    style="width: 40px; height: 40px"
+                    class="rounded-circle me-2"
+                  />
+                  <div class="message sent">Hey!</div>
+                </div>
+                <div class="d-flex mb-2 justify-content-end">
+                  <div class="message received">
+                    Hey we haven't seen eachother in like 2 weeks haha do you want to go grab coffee nearby?
+                  </div>
+                </div>
+                <div class="d-flex mb-2 justify-content-end">
+                  <div class="message received">
+                    I just need to find some time on my calendar since I have been so busy, and I know we both have!
+                  </div>
+                </div>
+                <div class="d-flex mb-2">
+                  <img
+                    src="../../assets/media/logos/img.jpg"
+                    alt="User"
+                    style="width: 40px; height: 40px"
+                    class="rounded-circle me-2"
+                  />
+                  <div class="message sent">Yes I would love that!</div>
+                </div>
+                <div class="d-flex mb-2">
+                  <img
+                    src="../../assets/media/logos/img.jpg"
+                    alt="User"
+                    style="width: 40px; height: 40px"
+                    class="rounded-circle me-2"
+                  />
+                  <div class="message sent">Pick a place</div>
+                </div>
+                <div class="d-flex mb-2 justify-content-end">
+                  <div class="message received">Sorry working so I can't look up one</div>
+                </div>
+                <div class="d-flex mb-2 justify-content-end">
+                  <div class="message received">Beans and Cats at 5402 N State St</div>
+                </div>
+                <div class="d-flex mb-2">
+                  <img
+                    src="../../assets/media/logos/img.jpg"
+                    alt="User"
+                    style="width: 40px; height: 40px"
+                    class="rounded-circle me-2"
+                  />
+                  <div class="message sent">Thanks, I can't wait to see you tomorrow for coffee!</div>
+                </div>
+              </div>
+              <div style="border: 1px solid #989ba1; border-radius: 8px; padding: 15px; display: flex;justify-content: space-between; align-items: center;">
+                <input style="outline: none; border: none; width: 70%;" type="text" class="fs-6" placeholder="Write a message..." />
+                <div class="d-flex align-items-center gap-2">
+                  <i class="fa-solid fa-paperclip"  style="color: #989ba1; font-size: 16px;"></i>
+                  <i class="fa-regular fa-face-smile" style="color: #989ba1; font-size: 16px;"></i>
+                  <button
+                    class="text-white border-0"
+                    style="border-radius: 3px; background: #1d75dd; display: inline-flex; justify-content: center;align-items: center; width: 20px; height: 20px; font-size: 10px;"
+                  >
+                    <i class="fa-solid fa-paper-plane"></i>
+                  </button>
+                </div>
+              </div>
+            </div> 
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 3,
+        spaceBetween: 20,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        loop: true,
+        autoplay: {
+          delay: 3000,
+          disableOnInteraction: false,
+        },
+        breakpoints: {
+          440: {
+            slidesPerView: 3,
+          },
+          540: {
+            slidesPerView: 5,
+          },
+          1124: {
+            slidesPerView: 6,
+          },
+        },
+      });
+    </script>
+    <script>
+      const sidebar = document.querySelector(".kt_app_sidebar");
+      const mobileToggle = document.getElementById("kt_app_sidebar_mobile_toggle");
+      const sidebarToggle = document.getElementById("kt_app_sidebar_toggle");
+      const overlay = document.getElementById("sidebar_overlay");
+      const body = document.body;
+
+      function checkScreenSize() {
+        if (window.innerWidth <= 998) {
+          sidebar.classList.remove("mobile-open");
+          overlay.classList.remove("active");
+          body.classList.remove("no-scroll");
+        } else {
+          sidebar.classList.add("mobile-open");
+          overlay.classList.remove("active");
+          body.classList.remove("no-scroll");
+        }
+      }
+
+      function toggleSidebar() {
+        sidebar.classList.toggle("mobile-open");
+        overlay.classList.toggle("active");
+
+        if (sidebar.classList.contains("mobile-open")) {
+          body.classList.add("no-scroll");
+        } else {
+          body.classList.remove("no-scroll");
+        }
+      }
+
+      function closeSidebar() {
+        sidebar.classList.remove("mobile-open");
+        overlay.classList.remove("active");
+        body.classList.remove("no-scroll");
+      }
+
+      mobileToggle.addEventListener("click", toggleSidebar);
+
+      sidebarToggle.addEventListener("click", closeSidebar);
+
+      overlay.addEventListener("click", closeSidebar);
+
+      window.addEventListener("load", checkScreenSize);
+      window.addEventListener("resize", checkScreenSize);
+    </script>
+  </body>
+</html>

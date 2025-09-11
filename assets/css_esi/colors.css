@@ -513,6 +513,28 @@
 .container-p {
   padding-inline: 0;
 }
+.info {
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 3px;
+  padding: 17px;
+}
+.info-green {
+  background: #effff4;
+  color: #009432;
+}
+.info-blue {
+  background: #effff4;
+  color: #009432;
+}
+.info-yellow {
+  background: #effff4;
+  color: #009432;
+}
+.info-red {
+  background: #effff4;
+  color: #009432;
+}
 @media (min-width: 998px) {
   .container-p {
     padding-inline: 50px;
